@@ -30,7 +30,7 @@ class App extends Component {
             <MyHeader />
             <Route exact path='/' component={Home} />
             <Route path='/skills' component={Skills} />
-            <Route path='/form' render={() => <EmailForm />} />
+            <Route path='/form' component={EmailForm} />
             <MyLinks />
           </Container>
           <Footer />

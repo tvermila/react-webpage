@@ -7,26 +7,46 @@ class EmailForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-
+      name: '',
+      email: '',
+      message: ''
     }
   }
 
     handleSubmit = (e) => {
       e.preventDefault()
       console.log('klikkasit SUBMIT')
+      const name = this.state.name
+      const email = this.state.email
+      const message = this.state.message
+
+      if(!name) {
+        alert('name missing')
+      } else if (!email) {
+        alert('email missing')
+      } else if (!message) {
+        alert('You forgot to write a message!')
+      }
+      
+    }
+
+    handleChange = (event) => {
+      const changedValue = { [event.target.name]: event.target.value }
+      this.setState(changedValue)
+      console.log(changedValue)
     }
 
     render() {
       return (
         <Form success>
           <FormField required>
-            <FormInput label='Name' placeholder='Full name' />
+            <FormInput name='name' label='Name' placeholder='Full name' onChange={this.handleChange} />
           </FormField>
           <FormField required>
-            <FormInput label='Email' placeholder='example@mail.com' />
+            <FormInput name='email' label='Email' placeholder='example@mail.com' onChange={this.handleChange} />
           </FormField>
-          <FormField>
-            <TextArea placeholder='Type your message here...' />
+          <FormField required>
+            <TextArea name='message' placeholder='Type your message here...' onChange={this.handleChange} />
           </FormField>
           <Message success header='Form Completed' content='message sent successfully!' />
           <Message
