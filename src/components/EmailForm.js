@@ -1,6 +1,7 @@
 import React from 'react'
 import { FormField, FormButton, FormInput, TextArea, Form, Message, FormGroup } from 'semantic-ui-react'
-import { NavLink, Redirect, Route } from 'react-router-dom'
+import { NavLink, Redirect } from 'react-router-dom'
+import mailService from '../services/mailService'
 
 
 class EmailForm extends React.Component {
@@ -28,39 +29,51 @@ class EmailForm extends React.Component {
 
       if(!name) {
         await this.setState({ error: true, notification: this.state.notification.concat('name is required'), nameError: true })
-      } 
+      }
       if (!email) {
-        await this.setState({ error: true, notification: this.state.notification.concat('email is required'), emailError: true})
+        await this.setState({ error: true, notification: this.state.notification.concat('email is required'), emailError: true })
       } else if (!this.validateEmail(email)) {
         await this.setState({ error: true, notification: this.state.notification.concat('invalid email address'), emailError: true })
       }
       if (!message) {
-        await this.setState({ error: true, notification: this.state.notification.concat('message is required'), messageError: true})
-      } 
+        await this.setState({ error: true, notification: this.state.notification.concat('message is required'), messageError: true })
+      }
+
+      const mailData = { name, email, message }
+
+      if(!this.state.error){
+        const response = await mailService.send(mailData)
+        console.log('mailservicen response', response)
+        if(response.status !== 200) {
+          console.log('Response status ei 200')
+          await this.setState({ error: true })
+        }
+      }
+
       if (!this.state.error) {
-        await this.setState({           
+        await this.setState({
           notification: this.state.notification.concat('Sent successfully!'),
           name: '',
           email: '',
           message: '',
           success: true
-         })
-         setTimeout(() => this.setState({ successfullySent: true }), 2000)
-         return null
+        })
+        setTimeout(() => this.setState({ successfullySent: true }), 2000)
+        return null
       }
-      
-      setTimeout(() => this.setState({ 
-        error: false, 
-        success: false, 
+
+      setTimeout(() => this.setState({
+        error: false,
+        success: false,
         notification: []
-      }), 5000) 
-      
+      }), 5000)
+
     }
 
     handleChange = async (event) => {
       const changedValue = { [event.target.name]: event.target.value }
       await this.setState(changedValue)
-      
+
       if (this.state.nameError && this.state.name) {
         this.setState({ nameError: false })
       } else if (this.state.emailError && this.state.email) {
@@ -74,10 +87,10 @@ class EmailForm extends React.Component {
     validateEmail = (email) => {
       const re = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/
       return re.test(email)
-  }
+    }
 
     render() {
-      if (this.state.successfullySent) { 
+      if (this.state.successfullySent) {
         return <Redirect to='/' />
       }
       return (
@@ -90,25 +103,25 @@ class EmailForm extends React.Component {
               onChange={this.handleChange}
               value={this.state.name}
               error={this.state.nameError}
-              />
+            />
           </FormField>
           <FormField required>
-            <FormInput 
-              name='email' 
-              label='Email' 
-              placeholder='example@mail.com' 
-              onChange={this.handleChange} 
-              value={this.state.email} 
+            <FormInput
+              name='email'
+              label='Email'
+              placeholder='example@mail.com'
+              onChange={this.handleChange}
+              value={this.state.email}
               error={this.state.emailError}
-              />
+            />
           </FormField>
           <FormField required>
-          <FormInput error={this.state.messageError}>
-            <TextArea 
-              name='message' 
-              placeholder='Type your message here...' 
-              onChange={this.handleChange} 
-              value={this.state.message}
+            <FormInput error={this.state.messageError}>
+              <TextArea
+                name='message'
+                placeholder='Type your message here...'
+                onChange={this.handleChange}
+                value={this.state.message}
               />
             </FormInput>
           </FormField>

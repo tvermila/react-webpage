@@ -2,8 +2,7 @@ module.exports = {
     "parser": "babel-eslint",
     "env": {
         "browser": true,
-        "es6": true,
-        "jest/globals": false
+        "es6": true
     },
     "extends": [
         "eslint:recommended",
@@ -17,8 +16,7 @@ module.exports = {
         "sourceType": "module"
     },
     "plugins": [
-        "react",
-        "jest"
+        "react"
     ],
     "rules": {
         "indent": [
