@@ -2,7 +2,7 @@ import React from 'react'
 import { Card } from 'semantic-ui-react'
 
 const Skills = () => (
-  <Card.Group>
+  <Card.Group centered>
     <Card>
       <Card.Content>
         <Card.Header>Programming</Card.Header>

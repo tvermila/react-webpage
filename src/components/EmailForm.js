@@ -1,5 +1,5 @@
 import React from 'react'
-import { FormField, FormButton, FormInput, TextArea, Form, Message, FormGroup } from 'semantic-ui-react'
+import { TextArea, Form, Message } from 'semantic-ui-react'
 import { NavLink, Redirect } from 'react-router-dom'
 import mailService from '../services/mailService'
 
@@ -85,7 +85,7 @@ class EmailForm extends React.Component {
     }
 
     validateEmail = (email) => {
-      const re = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/
+      const re = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/g
       return re.test(email)
     }
 
@@ -95,8 +95,8 @@ class EmailForm extends React.Component {
       }
       return (
         <Form success={this.state.success} error={this.state.error}>
-          <FormField required>
-            <FormInput
+          <Form.Field required>
+            <Form.Input
               name='name'
               label='Name'
               placeholder='Full name'
@@ -104,9 +104,9 @@ class EmailForm extends React.Component {
               value={this.state.name}
               error={this.state.nameError}
             />
-          </FormField>
-          <FormField required>
-            <FormInput
+          </Form.Field>
+          <Form.Field required>
+            <Form.Input
               name='email'
               label='Email'
               placeholder='example@mail.com'
@@ -114,25 +114,25 @@ class EmailForm extends React.Component {
               value={this.state.email}
               error={this.state.emailError}
             />
-          </FormField>
-          <FormField required>
-            <FormInput error={this.state.messageError}>
+          </Form.Field>
+          <Form.Field required>
+            <Form.Input error={this.state.messageError}>
               <TextArea
                 name='message'
                 placeholder='Type your message here...'
                 onChange={this.handleChange}
                 value={this.state.message}
               />
-            </FormInput>
-          </FormField>
+            </Form.Input>
+          </Form.Field>
           <Message success header='Form Completed' content={this.state.notification.join()} />
           <Message error header='Error' content={this.state.notification.join(', ')} />
-          <FormGroup>
-            <FormButton type='submit' onClick={this.handleSubmit}>Submit</FormButton>
+          <Form.Group>
+            <Form.Button type='submit' onClick={this.handleSubmit}>Submit</Form.Button>
             <NavLink to='/'>
-              <FormButton>Cancel</FormButton>
+              <Form.Button>Cancel</Form.Button>
             </NavLink>
-          </FormGroup>
+          </Form.Group>
         </Form>
       )
     }

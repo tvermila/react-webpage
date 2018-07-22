@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container } from 'semantic-ui-react'
+import { Container, Popup } from 'semantic-ui-react'
 import Footer from './components/Footer'
 import EmailForm from './components/EmailForm'
 import { Route } from 'react-router-dom'
@@ -14,11 +14,15 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      dimmerActive: true
+      dimmerActive: true,
+      showPopup: false
     }
   }
 
-  handleClose = () => this.setState({ dimmerActive: false })
+  handleClose = () => {
+    this.setState({ dimmerActive: false, showPopup: true })
+    setTimeout(() => this.setState({ showPopup: false }), 2500)
+  }
 
   render() {
     return (
@@ -31,7 +35,7 @@ class App extends Component {
             <Route exact path='/' component={Home} />
             <Route path='/skills' component={Skills} />
             <Route path='/form' component={EmailForm} />
-            <MyLinks />
+            <Popup trigger={<MyLinks />} content='See my links here' basic />            
           </Container>
           <Footer />
         </Container>

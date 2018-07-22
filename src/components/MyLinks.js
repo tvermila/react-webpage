@@ -1,14 +1,20 @@
 import React from 'react'
-import { Icon } from 'semantic-ui-react'
+import { Icon, Popup } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
 
 const MyLinks = () => (
   <div style={{ marginTop: 20 }}>
-    <Icon link name='linkedin square' size='huge' onClick={() => window.open('https://www.linkedin.com/in/tomas-vermila/')} />
+    <Popup trigger={
+      <Icon link name='linkedin square' size='huge' onClick={() => window.open('https://www.linkedin.com/in/tomas-vermila/')} />
+      } content="Click to go to my linkedin profile" />
     <NavLink to='/form'>
-      <Icon name='envelope' size='huge' />
+      <Popup trigger={
+        <Icon name='envelope' size='huge' />
+      } content='Click to contact me' />
     </NavLink>
-    <Icon link name='git square' size='huge' onClick={() => window.open('https://github.com/tvermila')} />
+    <Popup trigger={
+      <Icon link name='git square' size='huge' onClick={() => window.open('https://github.com/tvermila')} />
+    } content='See my GitHub profile' />
   </div>
 )
 
