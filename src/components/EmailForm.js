@@ -1,5 +1,5 @@
 import React from 'react'
-import { TextArea, Form, Message } from 'semantic-ui-react'
+import { TextArea, Form, Message, Loader, Dimmer } from 'semantic-ui-react'
 import { NavLink, Redirect } from 'react-router-dom'
 import mailService from '../services/mailService'
 
@@ -17,7 +17,8 @@ class EmailForm extends React.Component {
       error: false,
       success: false,
       notification: [],
-      successfullySent: false
+      successfullySent: false,
+      loaderActive: false
     }
   }
 
@@ -42,7 +43,9 @@ class EmailForm extends React.Component {
       const mailData = { name, email, message }
 
       if(!this.state.error){
+        this.setState({ loaderActive: true })
         const response = await mailService.send(mailData)
+        this.setState({ loaderActive: false })
         console.log('mailservicen response', response)
         if(response.status !== 200) {
           console.log('Response status ei 200')
@@ -125,6 +128,9 @@ class EmailForm extends React.Component {
               />
             </Form.Input>
           </Form.Field>
+          <Dimmer active={this.state.loaderActive}>
+            <Loader size='large' active={this.state.loaderActive} />
+          </Dimmer>
           <Message success header='Form Completed' content={this.state.notification.join()} />
           <Message error header='Error' content={this.state.notification.join(', ')} />
           <Form.Group>

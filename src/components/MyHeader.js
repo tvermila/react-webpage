@@ -1,5 +1,5 @@
 import React from 'react'
-import { Segment, Divider, Header, Checkbox } from 'semantic-ui-react'
+import { Segment, Divider, Header } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
 
 const MyHeader = () => (
