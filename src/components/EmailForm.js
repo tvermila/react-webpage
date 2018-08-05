@@ -49,6 +49,7 @@ class EmailForm extends React.Component {
         console.log('mailservicen response', response)
         if(response.status !== 200) {
           console.log('Response status ei 200')
+          this.setState({ loaderActive: false })
           await this.setState({ error: true })
         }
       }
@@ -134,7 +135,7 @@ class EmailForm extends React.Component {
           <Message success header='Form Completed' content={this.state.notification.join()} />
           <Message error header='Error' content={this.state.notification.join(', ')} />
           <Form.Group>
-            <Form.Button type='submit' onClick={this.handleSubmit}>Submit</Form.Button>
+            <Form.Button primary type='submit' onClick={this.handleSubmit}>Submit</Form.Button>
             <NavLink to='/'>
               <Form.Button>Cancel</Form.Button>
             </NavLink>

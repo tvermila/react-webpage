@@ -3,10 +3,10 @@ import { Icon, Popup } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
 
 const MyLinks = () => (
-  <div style={{ marginTop: 20 }}>
+  <div>
     <Popup trigger={
       <Icon link name='linkedin square' size='huge' onClick={() => window.open('https://www.linkedin.com/in/tomas-vermila/')} />
-      } content="Click to go to my linkedin profile" />
+    } content="Click to go to my linkedin profile" />
     <NavLink to='/form'>
       <Popup trigger={
         <Icon name='envelope' size='huge' />

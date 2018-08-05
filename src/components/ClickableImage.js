@@ -25,8 +25,10 @@ class ClickableImage extends React.Component {
           src={this.props.src}
           circular size={this.state.size}
           onClick={this.handleClick}
-          /*     onMouseEnter={this.toggleHover}
-            onMouseLeave={this.toggleHover}*/
+          onMouseEnter={this.toggleHover}
+          onMouseLeave={this.toggleHover}
+          floated={this.props.floated}
+          centered={this.props.centered}
         />
       )
     }
