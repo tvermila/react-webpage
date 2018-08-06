@@ -8,7 +8,6 @@ import Skills from './components/Skills'
 import MyHeader from './components/MyHeader'
 import MyDimmer from './components/MyDimmer'
 import CV from './components/CV'
-import dbService from './services/dbService'
 import About from './components/About'
 
 class App extends Component {
@@ -16,35 +15,21 @@ class App extends Component {
     super()
     this.state = {
       dimmerActive: true,
-      activeItem: 'home',
+      activeItem: '',
       showWorkDetails: [],
-      history: [],
-      education: []
+      counter: 0
     }
   }
 
-  componentDidMount = async () => {
-    console.log('App.js componentDidMount()')
-    const history = await dbService.getHistory()
-    const education = await dbService.getEducation()
-    this.setState({ history, education })
-  }
-
-  handleMenuClick = ({ name }) => this.setState({ activeItem: name })
-
-  handleWorkClick = ({ name }) => {
-    const copy = [...this.state.showWorkDetails]
-    if(copy.includes(name)) {
-      const updatedArr = copy.filter(el => el !== name)
-      this.setState({ showWorkDetails: updatedArr })
-    }else {
-      this.setState({ showWorkDetails: copy.concat(name) })
-    }
+  handleMenuClick = (e, { name }) => {
+    if(name === 'skills')
+      this.setState({ activeItem: name, counter: this.state.counter + 1 })
+    else
+      this.setState({ activeItem: name })
   }
 
   handleClose = () => {
-    this.setState({ dimmerActive: false, showPopup: true })
-    setTimeout(() => this.setState({ showPopup: false }), 2500)
+    this.setState({ dimmerActive: false })
   }
 
   render() {
@@ -56,9 +41,9 @@ class App extends Component {
           <Container>
             <MyHeader activeItem={this.state.activeItem} handleMenuClick={this.handleMenuClick} />
             <Route exact path='/' component={Home} />
-            <Route path='/skills' component={Skills} />
+            <Route path='/skills' render={() => <Skills counter={this.state.counter} />} />
             <Route path='/form' component={EmailForm} />
-            <Route path='/cv' component={() => <CV history={this.state.history} education={this.state.education} />} />
+            <Route path='/cv' component={CV} />
             <Route path='/about' component={About} />
           </Container>
           <Footer />

@@ -1,10 +1,23 @@
 import React from 'react'
 import { List, Segment, Header } from 'semantic-ui-react'
+import dbService from '../services/dbService'
 
 class CV extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { jobIndexes: [], educationIndexes: [] }
+    this.state = {
+      jobIndexes: [],
+      educationIndexes: [],
+      history: [],
+      education: []
+    }
+  }
+
+  componentDidMount = async () => {
+    console.log('CV.js componentDidMount()')
+    const history = await dbService.getHistory()
+    const education = await dbService.getEducation()
+    this.setState({ history, education })
   }
 
   handleJobClick = (e) => {
@@ -27,14 +40,14 @@ class CV extends React.Component {
         <Segment color='blue' size='large'>
           <Header>Work history</Header>
           <List selection relaxed divided>
-            {this.props.history.map(job => (
+            {this.state.history.map(job => (
               <List.Item key={job.id} id={job.id} onClick={this.handleJobClick}>
                 <List.Icon name='arrow alternate circle right' id={job.id} onClick={this.handleJobClick} />
                 <List.Content>
                   <List.Header style={{ color: '#1d36d6' }} id={job.id} onClick={this.handleJobClick} >
                     {job.title}
                   </List.Header>
-                  <List.Description style={this.state.jobIndexes.includes(job.id.toString()) ? { display: '' } : { display: 'none' } }>
+                  <List.Description style={this.state.jobIndexes.includes(job.id) ? { display: '' } : { display: 'none' } }>
                     <p>{job.description}</p>
                   </List.Description>
                 </List.Content>
@@ -46,12 +59,12 @@ class CV extends React.Component {
         <Segment color='black' size='large'>
           <Header>Education</Header>
           <List selection relaxed divided>
-            {this.props.education.map(edu => (
+            {this.state.education.map(edu => (
               <List.Item key={edu.id} id={edu.id} onClick={this.handleEducationClick}>
                 <List.Icon name='square full' color='black' id={edu.id} onClick={this.handleEducationClick} />
                 <List.Content>
                   <List.Header style={{ color: '#1d36d6' }} id={edu.id} onClick={this.handleEducationClick}>{edu.title}</List.Header>
-                  <List.Description style={this.state.educationIndexes.includes(edu.id.toString()) ? { display: '' } : { display: 'none' } }>
+                  <List.Description style={this.state.educationIndexes.includes(edu.id) ? { display: '' } : { display: 'none' } }>
                     {edu.description}
                   </List.Description>
                 </List.Content>
