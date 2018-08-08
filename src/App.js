@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Container } from 'semantic-ui-react'
 import Footer from './components/Footer'
 import EmailForm from './components/EmailForm'
-import { Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import Home from './components/Home'
 import Skills from './components/Skills'
 import MyHeader from './components/MyHeader'
@@ -14,16 +14,17 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      dimmerActive: true,
+      dimmerActive: false,
       activeItem: '',
       showWorkDetails: [],
-      counter: 0
+      skills: 0,
+      home: 0
     }
   }
 
   handleMenuClick = (e, { name }) => {
-    if(name === 'skills')
-      this.setState({ activeItem: name, counter: this.state.counter + 1 })
+    if(name === 'skills' || name === 'home')
+      this.setState({ activeItem: name, [name]: this.state[name] + 1 })
     else
       this.setState({ activeItem: name })
   }
@@ -40,11 +41,14 @@ class App extends Component {
           <MyDimmer active={this.state.dimmerActive} handleClose={this.handleClose} />
           <Container>
             <MyHeader activeItem={this.state.activeItem} handleMenuClick={this.handleMenuClick} />
-            <Route exact path='/' component={Home} />
-            <Route path='/skills' render={() => <Skills counter={this.state.counter} />} />
-            <Route path='/form' component={EmailForm} />
-            <Route path='/cv' component={CV} />
-            <Route path='/about' component={About} />
+            <Switch>
+              <Route exact path='/' render={() => <Home counter={this.state.home} />} />
+              <Route path='/skills' render={() => <Skills counter={this.state.skills} />} />
+              <Route path='/form' component={EmailForm} />
+              <Route path='/cv' component={CV} />
+              <Route path='/about' component={About} />
+              <Route component={App} />
+            </Switch>
           </Container>
           <Footer />
         </Container>

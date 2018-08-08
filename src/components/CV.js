@@ -14,10 +14,10 @@ class CV extends React.Component {
   }
 
   componentDidMount = async () => {
-    console.log('CV.js componentDidMount()')
     const history = await dbService.getHistory()
+    this.setState({ history })
     const education = await dbService.getEducation()
-    this.setState({ history, education })
+    this.setState({ education })
   }
 
   handleJobClick = (e) => {

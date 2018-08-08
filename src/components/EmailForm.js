@@ -46,9 +46,7 @@ class EmailForm extends React.Component {
         this.setState({ loaderActive: true })
         const response = await mailService.send(mailData)
         this.setState({ loaderActive: false })
-        console.log('mailservicen response', response)
         if(response.status !== 200) {
-          console.log('Response status ei 200')
           this.setState({ loaderActive: false })
           await this.setState({ error: true })
         }
