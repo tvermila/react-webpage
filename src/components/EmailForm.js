@@ -1,5 +1,5 @@
 import React from 'react'
-import { TextArea, Form, Message, Loader, Dimmer } from 'semantic-ui-react'
+import { TextArea, Form, Message, Loader, Dimmer, Segment, Container } from 'semantic-ui-react'
 import { NavLink, Redirect } from 'react-router-dom'
 import mailService from '../services/mailService'
 
@@ -96,49 +96,53 @@ class EmailForm extends React.Component {
         return <Redirect to='/' />
       }
       return (
-        <Form success={this.state.success} error={this.state.error}>
-          <Form.Field required>
-            <Form.Input
-              name='name'
-              label='Name'
-              placeholder='Full name'
-              onChange={this.handleChange}
-              value={this.state.name}
-              error={this.state.nameError}
-            />
-          </Form.Field>
-          <Form.Field required>
-            <Form.Input
-              name='email'
-              label='Email'
-              placeholder='example@mail.com'
-              onChange={this.handleChange}
-              value={this.state.email}
-              error={this.state.emailError}
-            />
-          </Form.Field>
-          <Form.Field required>
-            <Form.Input error={this.state.messageError}>
-              <TextArea
-                name='message'
-                placeholder='Type your message here...'
-                onChange={this.handleChange}
-                value={this.state.message}
-              />
-            </Form.Input>
-          </Form.Field>
-          <Dimmer active={this.state.loaderActive}>
-            <Loader size='large' active={this.state.loaderActive} />
-          </Dimmer>
-          <Message success header='Form Completed' content={this.state.notification.join()} />
-          <Message error header='Error' content={this.state.notification.join(', ')} />
-          <Form.Group>
-            <Form.Button primary type='submit' onClick={this.handleSubmit}>Submit</Form.Button>
-            <NavLink to='/'>
-              <Form.Button>Cancel</Form.Button>
-            </NavLink>
-          </Form.Group>
-        </Form>
+        <Container text >
+          <Segment padded>
+            <Form success={this.state.success} error={this.state.error}>
+              <Form.Field required>
+                <Form.Input
+                  name='name'
+                  label='Name'
+                  placeholder='Full name'
+                  onChange={this.handleChange}
+                  value={this.state.name}
+                  error={this.state.nameError}
+                />
+              </Form.Field>
+              <Form.Field required>
+                <Form.Input
+                  name='email'
+                  label='Email'
+                  placeholder='example@mail.com'
+                  onChange={this.handleChange}
+                  value={this.state.email}
+                  error={this.state.emailError}
+                />
+              </Form.Field>
+              <Form.Field required>
+                <Form.Input error={this.state.messageError}>
+                  <TextArea
+                    name='message'
+                    placeholder='Type your message here...'
+                    onChange={this.handleChange}
+                    value={this.state.message}
+                  />
+                </Form.Input>
+              </Form.Field>
+              <Dimmer active={this.state.loaderActive}>
+                <Loader size='large' active={this.state.loaderActive} />
+              </Dimmer>
+              <Message success header='Form Completed' content={this.state.notification.join()} />
+              <Message error header='Error' content={this.state.notification.join(', ')} />
+              <Form.Group>
+                <Form.Button primary type='submit' onClick={this.handleSubmit}>Submit</Form.Button>
+                <NavLink to='/'>
+                  <Form.Button>Cancel</Form.Button>
+                </NavLink>
+              </Form.Group>
+            </Form>
+          </Segment>
+        </Container>
       )
     }
 }

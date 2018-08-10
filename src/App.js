@@ -44,7 +44,7 @@ class App extends Component {
             <Switch>
               <Route exact path='/' render={() => <Home counter={this.state.home} />} />
               <Route path='/skills' render={() => <Skills counter={this.state.skills} />} />
-              <Route path='/form' component={EmailForm} />
+              <Route path='/mail' component={EmailForm} />
               <Route path='/cv' component={CV} />
               <Route path='/about' component={About} />
               <Route component={App} />

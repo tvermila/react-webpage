@@ -6,7 +6,7 @@ const Infrastructure = ({ visible, anim3, anim2, clearAnim }) => {
   const container = { width: '100%', backgroundColor: 'gray' }
   const skills = { textAlign: 'right', padding: 5 }
   const hw = { width: '80%', backgroundColor: 'green', marginTop: 10 }
-  const java = { width: '65%', backgroundColor: 'blue' }
+  const wsrv = { width: '70%', backgroundColor: 'blue' }
   const js = { width: '60%', backgroundColor: 'turquoise', color: 'black' }
   const php = { width: '40%', backgroundColor: 'pink', color: 'black' }
   const css = { width: '35%', backgroundColor: 'yellow', color: 'black' }
@@ -40,7 +40,7 @@ const Infrastructure = ({ visible, anim3, anim2, clearAnim }) => {
             <Divider />
             <Transition visible={visible} animation={anim3} duration={1500}>
               <div style={container}>
-                <div style={{ ...skills, ...java }}>Java 65%</div>
+                <div style={{ ...skills, ...wsrv }}>Windows Server 2003-2016 70%</div>
               </div>
             </Transition>
             <Divider />

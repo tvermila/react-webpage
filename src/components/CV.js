@@ -36,7 +36,7 @@ class CV extends React.Component {
 
   render() {
     return (
-      <div>
+      <Segment style={{ backgroundColor: '#0d2347' }}>
         <Segment color='blue' size='large'>
           <Header>Work history</Header>
           <List selection relaxed divided>
@@ -72,7 +72,7 @@ class CV extends React.Component {
             ))}
           </List>
         </Segment>
-      </div>
+      </Segment>
     )
   }
 }

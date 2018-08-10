@@ -14,7 +14,6 @@ const Footer = () => {
     padding: 0
   }
   return (
-
     <Segment style={style} inverted>
       <Divider horizontal inverted>
         <MyLinks />

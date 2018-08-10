@@ -7,7 +7,7 @@ const MyLinks = () => (
     <Popup trigger={
       <Icon link name='linkedin square' size='huge' onClick={() => window.open('https://www.linkedin.com/in/tomas-vermila/')} />
     } content="Click to go to my linkedin profile" />
-    <NavLink to='/form'>
+    <NavLink to='/mail'>
       <Popup trigger={
         <Icon name='envelope' size='huge' />
       } content='Click to contact me' />
