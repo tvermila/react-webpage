@@ -24,9 +24,7 @@ class EmailForm extends React.Component {
 
     handleSubmit = async (e) => {
       e.preventDefault()
-      const name = this.state.name
-      const email = this.state.email
-      const message = this.state.message
+      const { name, email, message } = this.state
 
       if(!name) {
         await this.setState({ error: true, notification: this.state.notification.concat('name is required'), nameError: true })
@@ -137,7 +135,7 @@ class EmailForm extends React.Component {
               <Form.Group>
                 <Form.Button primary type='submit' onClick={this.handleSubmit}>Submit</Form.Button>
                 <NavLink to='/'>
-                  <Form.Button>Cancel</Form.Button>
+                  <Form.Button name='home' onClick={this.props.handleMenuClick}>Cancel</Form.Button>
                 </NavLink>
               </Form.Group>
             </Form>

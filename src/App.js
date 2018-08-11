@@ -18,9 +18,12 @@ class App extends Component {
       activeItem: '',
       showWorkDetails: [],
       skills: 0,
-      home: 0
+      home: 0,
+      lang: 'en'
     }
   }
+
+  handleLangChange = () => this.setState({ lang: this.state.lang === 'fi' ? 'en' : 'fi' })
 
   handleMenuClick = (e, { name }) => {
     if(name === 'skills' || name === 'home')
@@ -34,6 +37,7 @@ class App extends Component {
   }
 
   render() {
+    const { home, skills, lang } = this.state
     return (
       <div>
         <Route exact to='/' />
@@ -42,11 +46,11 @@ class App extends Component {
           <Container>
             <MyHeader activeItem={this.state.activeItem} handleMenuClick={this.handleMenuClick} />
             <Switch>
-              <Route exact path='/' render={() => <Home counter={this.state.home} />} />
-              <Route path='/skills' render={() => <Skills counter={this.state.skills} />} />
-              <Route path='/mail' component={EmailForm} />
+              <Route exact path='/' render={() => <Home counter={home} />} />
+              <Route path='/skills' render={() => <Skills counter={skills} />} />
+              <Route path='/mail' render={() => <EmailForm handleMenuClick={this.handleMenuClick} />} />
               <Route path='/cv' component={CV} />
-              <Route path='/about' component={About} />
+              <Route path='/about' render={() => <About lang={lang} />} />
               <Route component={App} />
             </Switch>
           </Container>

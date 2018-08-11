@@ -31,7 +31,7 @@ const Programming = ({ visible, anim1, anim2, clearAnim }) => {
             <Divider />
             <Transition visible={visible} animation={anim1} duration={2000}>
               <div style={container}>
-                <div style={{ ...skills, ...js }}>JavaScript 60%</div>
+                <div style={{ ...skills, ...js }}>JavaScript (jQuery, ES6, ReactJS) 60%</div>
               </div>
             </Transition>
             <Divider />

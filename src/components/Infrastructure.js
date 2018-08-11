@@ -7,11 +7,11 @@ const Infrastructure = ({ visible, anim3, anim2, clearAnim }) => {
   const skills = { textAlign: 'right', padding: 5 }
   const hw = { width: '80%', backgroundColor: 'green', marginTop: 10 }
   const wsrv = { width: '70%', backgroundColor: 'blue' }
-  const js = { width: '60%', backgroundColor: 'turquoise', color: 'black' }
-  const php = { width: '40%', backgroundColor: 'pink', color: 'black' }
-  const css = { width: '35%', backgroundColor: 'yellow', color: 'black' }
-  const others = { width: '30%', backgroundColor: 'purple' }
-  const ruby = { width: '25%', backgroundColor: 'black' }
+  const nc = { width: '55%', backgroundColor: 'turquoise', color: 'black' }
+  const sccm = { width: '50%', backgroundColor: 'pink', color: 'black' }
+  const backup = { width: '40%', backgroundColor: 'yellow', color: 'black' }
+  const img = { width: '75%', backgroundColor: 'purple' }
+  const linux = { width: '25%', backgroundColor: 'black' }
   return (
     <Segment size='large' raised style={{ backgroundColor: '#0d2347' }}>
       <Grid>
@@ -38,6 +38,12 @@ const Infrastructure = ({ visible, anim3, anim2, clearAnim }) => {
               </div>
             </Transition>
             <Divider />
+            <Transition visible={visible} animation={anim3} duration={3500}>
+              <div style={container}>
+                <div style={{ ...skills, ...img }}>ImageX, Symantec Ghost 75%</div>
+              </div>
+            </Transition>
+            <Divider />
             <Transition visible={visible} animation={anim3} duration={1500}>
               <div style={container}>
                 <div style={{ ...skills, ...wsrv }}>Windows Server 2003-2016 70%</div>
@@ -46,31 +52,25 @@ const Infrastructure = ({ visible, anim3, anim2, clearAnim }) => {
             <Divider />
             <Transition visible={visible} animation={anim3} duration={2000}>
               <div style={container}>
-                <div style={{ ...skills, ...js }}>JavaScript 60%</div>
+                <div style={{ ...skills, ...nc }}>Solarwinds N-Central 55%</div>
               </div>
             </Transition>
             <Divider />
             <Transition visible={visible} animation={anim3} duration={2500}>
               <div style={container}>
-                <div style={{ ...skills, ...php }}>PHP 40%</div>
+                <div style={{ ...skills, ...sccm }}>Microsoft SCCM, VMware vCenter 50%</div>
               </div>
             </Transition>
             <Divider />
             <Transition visible={visible} animation={anim3} duration={3000}>
               <div style={container}>
-                <div style={{ ...skills, ...css }}>CSS 35%</div>
-              </div>
-            </Transition>
-            <Divider />
-            <Transition visible={visible} animation={anim3} duration={3500}>
-              <div style={container}>
-                <div style={{ ...skills, ...others }}>C++, C#, C, Python 30%</div>
+                <div style={{ ...skills, ...backup }}>Symantec Backup Exec, Veeam backup & replication 40%</div>
               </div>
             </Transition>
             <Divider />
             <Transition visible={visible} animation={anim3} duration={4000}>
               <div style={container}>
-                <div style={{ ...skills, ...ruby }}>Ruby 25%</div>
+                <div style={{ ...skills, ...linux }}>RedHat, VMware ESXi 25%</div>
               </div>
             </Transition>
             <Divider />
