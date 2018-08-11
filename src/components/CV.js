@@ -35,10 +35,11 @@ class CV extends React.Component {
   }
 
   render() {
+    const lang = this.props.lang
     return (
       <Segment style={{ backgroundColor: '#0d2347' }}>
         <Segment color='blue' size='large'>
-          <Header>Work history</Header>
+          <Header>{lang === 'en' ? 'Work history' : 'Työhistoria'}</Header>
           <List selection relaxed divided>
             {this.state.history.map(job => (
               <List.Item key={job.id} id={job.id} onClick={this.handleJobClick}>
@@ -57,7 +58,7 @@ class CV extends React.Component {
         </Segment>
 
         <Segment color='black' size='large'>
-          <Header>Education</Header>
+          <Header>{lang === 'en' ? 'Education' : 'Koulutus'}</Header>
           <List selection relaxed divided>
             {this.state.education.map(edu => (
               <List.Item key={edu.id} id={edu.id} onClick={this.handleEducationClick}>

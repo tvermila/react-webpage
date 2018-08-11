@@ -90,6 +90,7 @@ class EmailForm extends React.Component {
     }
 
     render() {
+      const { lang } = this.props
       if (this.state.successfullySent) {
         return <Redirect to='/' />
       }
@@ -100,8 +101,8 @@ class EmailForm extends React.Component {
               <Form.Field required>
                 <Form.Input
                   name='name'
-                  label='Name'
-                  placeholder='Full name'
+                  label={lang === 'en' ? 'Name' : 'Nimi'}
+                  placeholder={lang === 'en' ? 'Full name' : 'Koko nimi'}
                   onChange={this.handleChange}
                   value={this.state.name}
                   error={this.state.nameError}
@@ -110,8 +111,8 @@ class EmailForm extends React.Component {
               <Form.Field required>
                 <Form.Input
                   name='email'
-                  label='Email'
-                  placeholder='example@mail.com'
+                  label={lang === 'en' ? 'Email' : 'Sähköposti'}
+                  placeholder={lang === 'en' ? 'example@mail.com' : 'esimerkki@mail.com'}
                   onChange={this.handleChange}
                   value={this.state.email}
                   error={this.state.emailError}
@@ -121,7 +122,7 @@ class EmailForm extends React.Component {
                 <Form.Input error={this.state.messageError}>
                   <TextArea
                     name='message'
-                    placeholder='Type your message here...'
+                    placeholder={lang === 'en' ? 'Type your message here...' : 'Kirjoita tähän viestisi...'}
                     onChange={this.handleChange}
                     value={this.state.message}
                   />
@@ -130,12 +131,14 @@ class EmailForm extends React.Component {
               <Dimmer active={this.state.loaderActive}>
                 <Loader size='large' active={this.state.loaderActive} />
               </Dimmer>
-              <Message success header='Form Completed' content={this.state.notification.join()} />
-              <Message error header='Error' content={this.state.notification.join(', ')} />
+              <Message success header={lang === 'en' ? 'Sent successfully' : 'Lähetys onnistui'}
+                content={this.state.notification.join()} />
+              <Message error header={lang === 'en' ? 'Error' : 'Virhe'}
+                content={this.state.notification.join(', ')} />
               <Form.Group>
-                <Form.Button primary type='submit' onClick={this.handleSubmit}>Submit</Form.Button>
+                <Form.Button primary type='submit' onClick={this.handleSubmit}>{lang === 'en' ? 'Submit' : 'Lähetä'}</Form.Button>
                 <NavLink to='/'>
-                  <Form.Button name='home' onClick={this.props.handleMenuClick}>Cancel</Form.Button>
+                  <Form.Button name='home' onClick={this.props.handleMenuClick}>{lang === 'en' ? 'Cancel' : 'Peruuta'}</Form.Button>
                 </NavLink>
               </Form.Group>
             </Form>

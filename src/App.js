@@ -19,7 +19,7 @@ class App extends Component {
       showWorkDetails: [],
       skills: 0,
       home: 0,
-      lang: 'en'
+      lang: 'fi'
     }
   }
 
@@ -32,9 +32,7 @@ class App extends Component {
       this.setState({ activeItem: name })
   }
 
-  handleClose = () => {
-    this.setState({ dimmerActive: false })
-  }
+  handleClose = () => this.setState({ dimmerActive: false })
 
   render() {
     const { home, skills, lang } = this.state
@@ -44,11 +42,16 @@ class App extends Component {
         <Container style={{ marginBottom: 150 }}>
           <MyDimmer active={this.state.dimmerActive} handleClose={this.handleClose} />
           <Container>
-            <MyHeader activeItem={this.state.activeItem} handleMenuClick={this.handleMenuClick} />
+            <MyHeader
+              activeItem={this.state.activeItem}
+              handleMenuClick={this.handleMenuClick}
+              handleLangChange={this.handleLangChange}
+              lang={lang}
+            />
             <Switch>
-              <Route exact path='/' render={() => <Home counter={home} />} />
-              <Route path='/skills' render={() => <Skills counter={skills} />} />
-              <Route path='/mail' render={() => <EmailForm handleMenuClick={this.handleMenuClick} />} />
+              <Route exact path='/' render={() => <Home counter={home} lang={lang} />} />
+              <Route path='/skills' render={() => <Skills counter={skills} lang={lang} />} />
+              <Route path='/mail' render={() => <EmailForm handleMenuClick={this.handleMenuClick} lang={lang} />} />
               <Route path='/cv' component={CV} />
               <Route path='/about' render={() => <About lang={lang} />} />
               <Route component={App} />
