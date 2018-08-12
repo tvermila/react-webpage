@@ -50,31 +50,31 @@ const Infrastructure = ({ visible, anim3, anim2, clearAnim, lang }) => {
               </div>
             </Transition>
             <Divider />
-            <Transition visible={visible} animation={anim3} duration={3500}>
+            <Transition visible={visible} animation={anim3} duration={1500}>
               <div style={container}>
                 <div style={{ ...skills, ...img }}>ImageX, Symantec Ghost 75%</div>
               </div>
             </Transition>
             <Divider />
-            <Transition visible={visible} animation={anim3} duration={1500}>
+            <Transition visible={visible} animation={anim3} duration={2000}>
               <div style={container}>
                 <div style={{ ...skills, ...wsrv }}>Windows Server 2003-2016 70%</div>
               </div>
             </Transition>
             <Divider />
-            <Transition visible={visible} animation={anim3} duration={2000}>
+            <Transition visible={visible} animation={anim3} duration={2500}>
               <div style={container}>
                 <div style={{ ...skills, ...nc }}>Solarwinds N-Central 55%</div>
               </div>
             </Transition>
             <Divider />
-            <Transition visible={visible} animation={anim3} duration={2500}>
+            <Transition visible={visible} animation={anim3} duration={3000}>
               <div style={container}>
                 <div style={{ ...skills, ...sccm }}>Microsoft SCCM, VMware vCenter 50%</div>
               </div>
             </Transition>
             <Divider />
-            <Transition visible={visible} animation={anim3} duration={3000}>
+            <Transition visible={visible} animation={anim3} duration={3500}>
               <div style={container}>
                 <div style={{ ...skills, ...backup }}>Symantec Backup Exec, Veeam backup & replication 40%</div>
               </div>

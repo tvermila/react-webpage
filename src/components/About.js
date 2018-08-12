@@ -25,7 +25,7 @@ const text = ({ lang }) => {
       Expressillä höystetty NodeJS, joka hoitaa sähköpostiliikenteen sekä tietokantakyselyt CouchDB-tietokantaan. Olisin mieluummin käyttänyt MongoDB:tä
       tietokantana, mutta se oli vähän turhan raskas Raspberry Pi 3 raudalle, missä pyörii Rasbian Stretch käyttöjärjestelmä. Tukeakaan myöhemmille
       versioille ei MongoDB:stä enää ollut saatavilla. Webbipalvelimena toimii Apache, jota käytän myös PHP sivustolleni. Se oli vain pieni harjoitustyö
-      koulussa, eikä sillä sivustolla käytetty mitään tyylikirjastoa, mikä näkyy lopputuloksessa :-). Jos kuitenkin kiinnostaa, niin sivusto löytyy
+      koulussa, eikä sillä sivustolla käytetty mitään tyylikirjastoa, mikä näkyy lopputuloksessa &#9786;. Jos kuitenkin kiinnostaa, niin sivusto löytyy
       &nbsp;<a href='http://php.tvermila.fi'>täältä</a>.
     </p>
   )
