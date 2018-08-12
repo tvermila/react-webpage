@@ -1,7 +1,7 @@
 import React from 'react'
 import { Segment, Grid, Divider, Message, Transition } from 'semantic-ui-react'
 
-const Programming = ({ visible, anim1, anim2, clearAnim }) => {
+const Programming = ({ visible, anim1, anim2, clearAnim, lang }) => {
 
   const container = { width: '100%', backgroundColor: 'gray' }
   const skills = { textAlign: 'right', padding: 5 }
@@ -63,12 +63,27 @@ const Programming = ({ visible, anim1, anim2, clearAnim }) => {
           <Grid.Column computer={6} mobile={16}>
             <Transition visible={visible} animation={anim2} duration={2000}>
               <Message style={{ marginTop: 10 }}>
-                <Message.Header>Programming</Message.Header>
-                <p style={{ color: 'black' }}>
-                  I have been programming mostly with Java during my studies, but also with PHP,
-                  C, C++ and Python. Lately I have been studying latest JavaScript Frameworks,
-                  espescially React, which I&#39;ve used to build this website.
-                </p>
+                <Message.Header>{lang === 'en' ? 'Programming' : 'Ohjelmointi'}</Message.Header>
+                {lang === 'en' ?
+                  <p style={{ color: 'black' }}>
+                    I have been programming mostly with Java during my studies, but also with PHP,
+                    C, C++ and Python. Lately I have been studying latest JavaScript Frameworks,
+                    espescially React, which I&#39;ve used to build this website. I am also familiar
+                    with JavaScript jQuery library and have done one mobile application with jQuery
+                    Mobile. In my projects I have mostly used MySQL or Microsoft SQL databases, but
+                    also some SQLite, MongoDB and on this site CouchDB. From CSS based frameworks
+                    I have mostly used Bootstrap or Semantic UI.
+                  </p>
+                  :
+                  <p>
+                    Opintojen aikana on tullut enimmäkseen koodailtua Javalla, mutta myös PHP, C, C++
+                    ja Pythonilla vähän. Viime aikoina olen innostunut Javascriptin ohjelmistokehyksistä,
+                    etenkin Reactista, jolla tämäkin sivusto on tehty. Javascriptin jQuery-kirjasto on myös tuttu
+                    ja yhden mobiiliaplikaationkin ole jQuery Mobilella tehnyt. Tietokannoista eniten olen käyttänyt
+                    MySQL:ää ja Microsoft SQL Serveriä, mutta vähän myös SQLiteä, MongoDB:tä ja tällä sivustolla
+                    testimielessä CouchDB:tä. Tyylikirjastoista on tullut käytettyä Bootstrapia ja Semancti UI:ta.
+                  </p>
+                }
               </Message>
             </Transition>
           </Grid.Column>

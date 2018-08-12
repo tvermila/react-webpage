@@ -14,7 +14,7 @@ const text = ({ lang }) => {
         This site has been made with ReactJS. I also used React Router to move between sites and for styling Semantic UI React CSS framework.
         I also have NodeJS + Express as a backend server forwarding contact request to my email and handling database requests to my CouchDB database.
         I would rather have had MongoDB database, but since all this is running on Raspberry Pi 3 and Raspbian Stretch, it is not supported by
-        the OS and it is also a bit demanding for the hardware. And finally, I have Apache as a web server. It also serves my PHP site. It was
+        the OS and it is also a bit demanding on the hardware. And finally, I have Apache as a web server. It also serves my PHP site. It was
         a small project for the PHP course at school. If you are interested, it can be found&nbsp;<a href='http://php.tvermila.fi'>here</a>.
       </p>
     )

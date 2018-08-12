@@ -25,8 +25,8 @@ class Skills extends React.Component {
     const { visible, anim1, anim2, anim3 } = this.state
     return (
       <div>
-        <Programming visible={visible} anim1={anim1} anim2={anim2} clearAnim={this.clearAnim} />
-        <Infrastructure visible={visible} anim3={anim3} anim2={anim2} clearAnim={this.clearAnim} />
+        <Programming lang={this.props.lang} visible={visible} anim1={anim1} anim2={anim2} clearAnim={this.clearAnim} />
+        <Infrastructure lang={this.props.lang} visible={visible} anim3={anim3} anim2={anim2} clearAnim={this.clearAnim} />
       </div>
     )
   }

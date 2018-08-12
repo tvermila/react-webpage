@@ -1,7 +1,7 @@
 import React from 'react'
 import { Segment, Grid, Divider, Message, Transition } from 'semantic-ui-react'
 
-const Infrastructure = ({ visible, anim3, anim2, clearAnim }) => {
+const Infrastructure = ({ visible, anim3, anim2, clearAnim, lang }) => {
 
   const container = { width: '100%', backgroundColor: 'gray' }
   const skills = { textAlign: 'right', padding: 5 }
@@ -19,15 +19,27 @@ const Infrastructure = ({ visible, anim3, anim2, clearAnim }) => {
           <Grid.Column computer={6} mobile={16}>
             <Transition visible={visible} animation={anim2} duration={2000}>
               <Message style={{ marginTop: 10 }}>
-                <Message.Header>Infrastructure</Message.Header>
-                <p style={{ color: 'black' }}>
-                  I was 11 years in pre-installation. First 3 years I worked mostly with workstations and after that my main focus was
-                  in server pre-installation. It included software installation, OS imaging, hardware and rack installations.
-                  So I am pretty familiar with the hardware. Operating systems were mostly Windows Servers but there were also some
-                  RedHat Linux pre-installations. For the past 2,5 years I have been working in Operation Center. It includes system
-                  monitoring and administration. I have gained knowledge in virtualization (mostly VMware based), backup solutions like
-                  Symantec Backup Exec and Veeam.
-                </p>
+                <Message.Header>{lang === 'en' ? 'IT Infrastructure' : 'IT-infra'}</Message.Header>
+                {lang === 'en' ?
+                  <p style={{ color: 'black' }}>
+                    I was 11 years in pre-installation. First 3 years I worked mostly with workstations and after that my main focus was
+                    in server pre-installation. It included software installation, OS imaging, hardware and rack installations.
+                    So I am pretty familiar with the hardware. Operating systems were mostly Windows Servers but there were also some
+                    RedHat Linux pre-installations. For the past 2,5 years I have been working in Operation Center. It includes system
+                    monitoring and administration. I have gained knowledge in virtualization (mostly VMware based), backup solutions like
+                    Symantec Backup Exec and Veeam Backup & Replication.
+                  </p>
+                  :
+                  <p>
+                    Olin 11 vuotta esiasennuksessa. Ensimmäiset kolme vuotta tein enimmäkseen työasema-asennuksia, jonka jälkeen seuraavat
+                    kahdeksan vuotta pääsääntöisesti palvelimien esiasennuksia. Työtehtävät käsittivät ohjelmistojen asennuksia, käyttöjärjestelmien
+                    imagejen tekemistä, rauta-asennuksia ja palvelimien räkkiasennuksia. Tästä syystä työasemien ja palvelimien rautapuoli on melko tuttua.
+                    Suurin osa asennetuista käyttöjärjestelmistä olivat Windows Servereitä, mutta jonkin verran myös RedHat Linux -asennuksia. Viimeiset 2,5
+                    vuotta olen työskennellyt Operation Centerissä. Työt koostuvat pääosin järjestelmien valvonnasta ja ylläpidosta. Päivittäin tulee
+                    myös oltua tekemisissä virtuaalialustojen kanssa (enimmäkseen VMware-pohjaisia) sekä varmistusympäristöjen kanssa, kuten Symantec
+                    Backup Exec ja Veeam Backup & Replication.
+                  </p>
+                }
               </Message>
             </Transition>
           </Grid.Column>

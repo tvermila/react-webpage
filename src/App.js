@@ -52,7 +52,7 @@ class App extends Component {
               <Route exact path='/' render={() => <Home counter={home} lang={lang} />} />
               <Route path='/skills' render={() => <Skills counter={skills} lang={lang} />} />
               <Route path='/mail' render={() => <EmailForm handleMenuClick={this.handleMenuClick} lang={lang} />} />
-              <Route path='/cv' component={CV} />
+              <Route path='/cv' render={() => <CV lang={lang} />}/>
               <Route path='/about' render={() => <About lang={lang} />} />
               <Route component={App} />
             </Switch>

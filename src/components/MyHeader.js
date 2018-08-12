@@ -5,9 +5,9 @@ import { NavLink } from 'react-router-dom'
 const MyHeader = ({ activeItem, handleMenuClick, handleLangChange, lang }) => (
   <Segment inverted style={{ marginBottom: 20 }}>
     <div>
-      <Flag name='fi' />fi&nbsp;
-      <Checkbox toggle onChange={handleLangChange} />
-      &nbsp;en&nbsp;<Flag name='gb' />
+      <Flag name='gb' />&nbsp;en&nbsp;
+      <Checkbox defaultChecked toggle onChange={handleLangChange} />&nbsp;
+      &nbsp;<Flag name='fi' />&nbsp;fi
     </div>
     <Divider horizontal inverted>
       <Header size='huge' style={{ color: 'white' }}>{lang === 'en' ? 'My homepage' : 'Kotisivuni'}</Header>

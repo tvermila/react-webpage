@@ -49,7 +49,7 @@ class CV extends React.Component {
                     {job.title}
                   </List.Header>
                   <List.Description style={this.state.jobIndexes.includes(job.id) ? { display: '' } : { display: 'none' } }>
-                    <p>{job.description}</p>
+                    <p>{lang === 'en' ? job.description : job.kuvaus}</p>
                   </List.Description>
                 </List.Content>
               </List.Item>
@@ -64,9 +64,14 @@ class CV extends React.Component {
               <List.Item key={edu.id} id={edu.id} onClick={this.handleEducationClick}>
                 <List.Icon name='square full' color='black' id={edu.id} onClick={this.handleEducationClick} />
                 <List.Content>
-                  <List.Header style={{ color: '#1d36d6' }} id={edu.id} onClick={this.handleEducationClick}>{edu.title}</List.Header>
+                  <List.Header
+                    style={{ color: '#1d36d6' }}
+                    id={edu.id}
+                    onClick={this.handleEducationClick}>
+                    {lang === 'en' ? edu.title : edu.otsikko || edu.title}
+                  </List.Header>
                   <List.Description style={this.state.educationIndexes.includes(edu.id) ? { display: '' } : { display: 'none' } }>
-                    {edu.description}
+                    {lang === 'en' ? edu.description : edu.kuvaus}
                   </List.Description>
                 </List.Content>
               </List.Item>

@@ -24,18 +24,35 @@ class EmailForm extends React.Component {
 
     handleSubmit = async (e) => {
       e.preventDefault()
+      const lang = this.props.lang
       const { name, email, message } = this.state
 
       if(!name) {
-        await this.setState({ error: true, notification: this.state.notification.concat('name is required'), nameError: true })
+        await this.setState({
+          error: true,
+          notification: this.state.notification.concat(lang === 'en' ? 'name is required' : 'nimi on pakollinen'),
+          nameError: true
+        })
       }
       if (!email) {
-        await this.setState({ error: true, notification: this.state.notification.concat('email is required'), emailError: true })
+        await this.setState({
+          error: true,
+          notification: this.state.notification.concat(lang === 'en' ? 'email is required' : 'sähköposti on pakollinen'),
+          emailError: true
+        })
       } else if (!this.validateEmail(email)) {
-        await this.setState({ error: true, notification: this.state.notification.concat('invalid email address'), emailError: true })
+        await this.setState({
+          error: true,
+          notification: this.state.notification.concat(lang === 'en' ? 'invalid email address' : 'sähköposti ei kelpaa'),
+          emailError: true
+        })
       }
       if (!message) {
-        await this.setState({ error: true, notification: this.state.notification.concat('message is required'), messageError: true })
+        await this.setState({
+          error: true,
+          notification: this.state.notification.concat(lang ==='en' ? 'message is required' : 'viesti on pakollinen'),
+          messageError: true
+        })
       }
 
       const mailData = { name, email, message }
@@ -52,7 +69,7 @@ class EmailForm extends React.Component {
 
       if (!this.state.error) {
         await this.setState({
-          notification: this.state.notification.concat('Sent successfully!'),
+          notification: this.state.notification.concat(lang === 'en' ? 'Sent successfully!' : 'Viestin lähetys onnistui!'),
           name: '',
           email: '',
           message: '',
@@ -112,7 +129,7 @@ class EmailForm extends React.Component {
                 <Form.Input
                   name='email'
                   label={lang === 'en' ? 'Email' : 'Sähköposti'}
-                  placeholder={lang === 'en' ? 'example@mail.com' : 'esimerkki@mail.com'}
+                  placeholder={lang === 'en' ? 'example@mail.com' : 'esimerkki@mail.fi'}
                   onChange={this.handleChange}
                   value={this.state.email}
                   error={this.state.emailError}
@@ -122,7 +139,7 @@ class EmailForm extends React.Component {
                 <Form.Input error={this.state.messageError}>
                   <TextArea
                     name='message'
-                    placeholder={lang === 'en' ? 'Type your message here...' : 'Kirjoita tähän viestisi...'}
+                    placeholder={lang === 'en' ? 'Type your message here...' : 'Kirjoita viestisi tähän...'}
                     onChange={this.handleChange}
                     value={this.state.message}
                   />
